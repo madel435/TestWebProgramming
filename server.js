@@ -38,12 +38,12 @@ app.get("/Quiz1/quiz1", (req, res) => {
   res.render("quiz1");
 });
 // LOGIN PAGE
-app.get("/login", (req, res) => {
+app.get("/Quiz2/login", (req, res) => {
   res.render("login");
 });
 
 // LOGIN HANDLER
-app.post("/login", (req, res) => {
+app.post("/Quiz2/login", (req, res) => {
   req.session.loggedIn = true;
   res.redirect("/Quiz2/quiz2Q");
 });
