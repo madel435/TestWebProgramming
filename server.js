@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-
 const session = require("express-session");
+
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
   session({
@@ -11,54 +12,45 @@ app.use(
     saveUninitialized: true,
   })
 );
+
 function requireLogin(req, res, next) {
   if (req.session.loggedIn) {
     next();
   } else {
-    res.redirect("/login");
+    res.redirect("/Quiz2/login"); // fixed: was "/login"
   }
 }
 
-
-// Tell Express to use Pug
 app.set("view engine", "pug");
 app.set("views", __dirname);
 
-
-// Serve static files (CSS, JS, images)
 app.use(express.static(path.join(__dirname, "public")));
 
-// Home page
 app.get("/", (req, res) => {
   res.render("home");
 });
 
-// Knowledge quiz intro page
 app.get("/Quiz1/quiz1", (req, res) => {
-  res.render("/Quiz1/quiz1");
+  res.render("Quiz1/quiz1"); // fixed: removed leading slash
 });
-// LOGIN PAGE
+
 app.get("/Quiz2/login", (req, res) => {
   res.render("Quiz2/login");
 });
 
-// LOGIN HANDLER
 app.post("/Quiz2/login", (req, res) => {
   req.session.loggedIn = true;
   res.redirect("/Quiz2/quiz2Q");
 });
 
-// First quiz question (example)
 app.get("/Quiz1/quiz1Q", (req, res) => {
-  res.render("/Quiz1/quiz1Q");
+  res.render("Quiz1/quiz1Q"); // fixed: removed leading slash
 });
 
-// Protected route: quiz2 results/page
 app.get("/Quiz2/quiz2Q", requireLogin, (req, res) => {
-  res.render("/Quiz2/quiz2Q");
+  res.render("Quiz2/quiz2Q"); // fixed: removed leading slash
 });
 
-// Resource page
 app.get("/resourcepage", (req, res) => {
   res.render("resourcepage");
 });
@@ -67,8 +59,6 @@ app.get("/FAdvisor", (req, res) => {
   res.render("FAdvisor");
 });
 
-
-// Start server
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
 });
