@@ -45,7 +45,7 @@ app.get("/Quiz2/login", (req, res) => {
 // LOGIN HANDLER
 app.post("/Quiz2/login", (req, res) => {
   req.session.loggedIn = true;
-  res.redirect("Quiz2/quiz2Q");
+  res.redirect("/Quiz2/quiz2Q");
 });
 
 // First quiz question (example)
