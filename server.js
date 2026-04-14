@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("home");
 });
 
 // Knowledge quiz intro page
@@ -66,6 +66,7 @@ app.get("/resourcepage", (req, res) => {
 app.get("/FAdvisor", (req, res) => {
   res.render("FAdvisor");
 });
+
 
 // Start server
 app.listen(3000, () => {

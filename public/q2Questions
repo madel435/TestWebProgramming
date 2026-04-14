@@ -1,4 +1,4 @@
-// ===================== QUIZ DATA =====================
+//In the file itself 
 // Self-assessment statements (rate 1-5: Strongly Disagree → Strongly Agree)
 export const questions = [
   "I keep track of how much money I spend each week.",
