@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 });
 
 // Knowledge quiz intro page
-app.get("/quiz1", (req, res) => {
+app.get("/Quiz1/quiz1", (req, res) => {
   res.render("quiz1");
 });
 // LOGIN PAGE
@@ -45,16 +45,16 @@ app.get("/login", (req, res) => {
 // LOGIN HANDLER
 app.post("/login", (req, res) => {
   req.session.loggedIn = true;
-  res.redirect("/quiz2Q");
+  res.redirect("/Quiz2/quiz2Q");
 });
 
 // First quiz question (example)
-app.get("/quiz1Q", (req, res) => {
+app.get("/Quiz1/quiz1Q", (req, res) => {
   res.render("quiz1Q");
 });
 
 // Protected route: quiz2 results/page
-app.get("/quiz2Q", requireLogin, (req, res) => {
+app.get("/Quiz2/quiz2Q", requireLogin, (req, res) => {
   res.render("quiz2Q");
 });
 
