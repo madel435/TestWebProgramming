@@ -39,7 +39,7 @@ app.get("/Quiz1/quiz1", (req, res) => {
 });
 // LOGIN PAGE
 app.get("/Quiz2/login", (req, res) => {
-  res.render("/Quiz2/login");
+  res.render("Quiz2/login");
 });
 
 // LOGIN HANDLER
