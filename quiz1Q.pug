@@ -1,0 +1,58 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Finance IQ — Quiz 1
+    link(href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet")
+    style.
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --accent: #7C8DA6;
+        --bg: #BEB3C3;
+        --card:#DDD3C9;
+        --border: #2a2a3a;
+        --text: #928E5E;
+        --muted: #666;
+        --radius: 14px;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Space Mono', monospace;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .container { max-width: 880px; width: 100%; }
+      .header { text-align: center; margin-bottom: 2rem; }
+      .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.4rem; background: linear-gradient(135deg, var(--accent), #00c8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.4rem; }
+      .tagline { color: var(--muted); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; }
+
+      /* Quiz layout */
+      #quiz-container { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+      .question-block {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.2rem 1.4rem;
+        width: 100%;
+        max-width: 720px;
+        color: #333;
+      }
+      .question-block h3 { color: var(--accent); font-family: 'Syne', sans-serif; margin-bottom: 0.2rem; }
+      .question-block p { margin-bottom: 0.6rem; color: #444; }
+      .question-block label { display: block; margin: 0.35rem 0; color: #222; }
+      @media (max-width:640px) { .question-block { padding: 1rem; } }
+
+  body
+    .container
+      .header
+        .logo 💸 Finance IQ
+        p.tagline Financial knowledge — quick check
+
+      #quiz-container
+
+    script(type="module" src="/startq1.js")
