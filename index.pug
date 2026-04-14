@@ -1,21 +1,18 @@
 doctype html
-html(lang="en")
+html
   head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Finance IQ — Know Your Money
-    link(href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet")
     style.
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
       :root {
         --accent: #7C8DA6;
-        --bg: #BEB3C3  ;
+        --bg: #BEB3C3;
         --card:#DDD3C9;
         --border: #2a2a3a;
         --text: #928E5E;
         --muted: #666;
         --radius: 14px;
       }
+
       body {
         background: var(--bg);
         color: var(--text);
@@ -26,10 +23,12 @@ html(lang="en")
         justify-content: center;
         padding: 2rem;
       }
+
       .container { max-width: 880px; width: 100%; }
 
       /* HEADER */
       .header { text-align: center; margin-bottom: 3.5rem; }
+
       .logo {
         font-family: 'Syne', sans-serif;
         font-weight: 800;
@@ -40,6 +39,7 @@ html(lang="en")
         line-height: 1;
         margin-bottom: 0.6rem;
       }
+
       .tagline {
         color: var(--muted);
         font-size: 0.8rem;
@@ -47,6 +47,7 @@ html(lang="en")
         text-transform: uppercase;
         margin-bottom: 1.2rem;
       }
+
       .description {
         color: #999;
         font-size: 0.92rem;
@@ -61,7 +62,10 @@ html(lang="en")
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
       }
-      @media (max-width: 640px) { .quiz-cards { grid-template-columns: 1fr; } }
+
+      @media (max-width: 640px) {
+        .quiz-cards { grid-template-columns: 1fr; }
+      }
 
       .quiz-card {
         background: var(--card);
@@ -73,17 +77,25 @@ html(lang="en")
         gap: 0.8rem;
         transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
       }
+
       .quiz-card:hover {
         transform: translateY(-4px);
         border-color: var(--accent);
         box-shadow: 0 12px 40px rgba(0,255,136,0.1);
       }
+
       .quiz-card h2 {
         font-family: 'Syne', sans-serif;
         font-size: 1.2rem;
         color: var(--accent);
       }
-      .quiz-card p { color: #999; font-size: 0.85rem; line-height: 1.7; flex: 1; }
+
+      .quiz-card p {
+        color: #999;
+        font-size: 0.85rem;
+        line-height: 1.7;
+        flex: 1;
+      }
 
       .btn {
         display: block;
@@ -102,7 +114,11 @@ html(lang="en")
         margin-top: 0.5rem;
         transition: transform 0.15s, box-shadow 0.15s;
       }
-      .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,255,136,0.25); }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0,255,136,0.25);
+      }
 
       .footer {
         text-align: center;
@@ -122,22 +138,21 @@ html(lang="en")
 
       .quiz-cards
         .quiz-card
-          h2  Financial Knowledge Quiz
+          h2 Financial Knowledge Quiz
           p Multiple-choice questions covering budgeting, investing, credit, and taxes. Get instant feedback and learn why each answer matters.
           a.btn(href="quiz1") Take the Knowledge Quiz →
 
         .quiz-card
-          h2  Financial Self Assessment
+          h2 Financial Self Assessment
           p Rate yourself on a 1–5 scale across 20 financial habits. Get personalized guidance on areas to improve.
-          a.btn(href="quiz2") Take the Self Assessment →
+          a.btn(href="quiz2Q") Take the Self Assessment →
 
         .quiz-card
           h2 General Resource
           p A list of general resources and topics to research. We are not financial advisors do research at your own risk
           a.btn(href="resourcepage") Resource Page →
- 
+
         .quiz-card
-          h2  Financial Advisor
-          p Get connected with a Financial Advisor and make the recommendations a reality. Take your quizzes to the Financial Advisor so that they can assist with checking your goals off 
-          a.btn(href="FAdvisor") Connect with Financial Advisor →
-                  
+          h2 Financial Advisor
+          p Get connected with a Financial Advisor and make the recommendations a reality. Take your quizzes to the Financial Advisor so that they can assist with checking your goals off.
+          a.btn(href="FAdvisor") Get connected with a Financial Advisor →

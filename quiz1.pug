@@ -1,12 +1,13 @@
+//Takes the name age and knowledge set
+
 doctype html
 html(lang="en")
   head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+  
     title Finance IQ — Financial Knowledge Quiz
-    link(href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet")
+ 
     style.
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
       :root {
         --accent: #00ff88;
         --bg: #0a0a12;
@@ -123,8 +124,8 @@ html(lang="en")
       }
   body
     .container
-      .logo 💸 Finance IQ
-      p.subtitle FINANCIAL HABITS ASSESSMENT
+      .logo  Finance IQ
+      p.subtitle FINANCIAL SELF ASSESSMENT
 
       // Name
       p.label WHAT’S YOUR NAME?
@@ -142,10 +143,10 @@ html(lang="en")
       // Rating
       p.label WHICH BEST DESCRIBES YOUR KNOWLEDGE SET?
       .rating-group
-        button.rating-btn 💀 Zero clue
-        button.rating-btn 🧩 Some basics
-        button.rating-btn 📘 Pretty solid
-        button.rating-btn 💼 Finance nerd
+        button.rating-btn  Zero clue
+        button.rating-btn  Some basics
+        button.rating-btn  Pretty solid
+        button.rating-btn  Finance nerd
 
       a.back-link(href="/quiz1Q") ← Submit
       a.back-link(href="/") ← Back to Home

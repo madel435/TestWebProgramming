@@ -1,97 +1,162 @@
-doctype html
-html(lang='en')
+ddoctype html
+html
   head
-    meta(charset='UTF-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title Finance IQ — Quiz
-    link(href='https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap', rel='stylesheet')
     style.
-      :root { --bg:#0a0a0f; --card:#13131a; --accent:#00ff88; --text:#f0f0f0; --muted:#888; --border:#2a2a3a; }
-      * { box-sizing:border-box; margin:0; padding:0; }
-      body { background:var(--bg); color:var(--text); font-family:'Space Mono',monospace; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; }
-      #app { width:100%; max-width:680px; }
-      .progress-bar { background:var(--border); border-radius:50px; height:6px; margin-bottom:28px; overflow:hidden; }
-      .progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),#00c8ff); border-radius:50px; transition:width .5s ease; }
-      .q-num { font-size:.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; margin-bottom:18px; display:block; }
-      .question-text { font-family:'Syne',sans-serif; font-size:clamp(1.1rem,3.5vw,1.4rem); font-weight:700; line-height:1.4; margin-bottom:28px; }
-      .rating-select { width:100%; padding:16px 20px; border:2px solid var(--border); border-radius:12px; background:#1c1c28; color:var(--text); font-family:'Space Mono',monospace; font-size:.9rem; cursor:pointer; margin-bottom:24px; min-height:52px; }
-      .rating-select:focus { outline:none; border-color:var(--accent); }
-      .rating-select option { background:#1c1c28; color:var(--text); }
-      .btn { background:var(--accent); color:#000; font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; padding:16px 40px; border-radius:50px; border:none; cursor:pointer; }
-      .btn:hover { opacity:.9; }
-      .btn:disabled { opacity:.4; cursor:not-allowed; }
+      body {
+        background:#ffffff;
+        color:#000;
+        font-family: Arial, sans-serif;
+        display:flex;
+        justify-content:center;
+        padding:40px 20px;
+      }
+
+      #app {
+        width:100%;
+        max-width:600px;
+      }
+
+      .page-title {
+        text-align:center;
+        font-size:1.8rem;
+        font-weight:bold;
+        margin-bottom:5px;
+      }
+
+      .page-sub {
+        text-align:center;
+        font-size:.8rem;
+        color:#555;
+        margin-bottom:30px;
+      }
+
+      .question-block {
+        border:1px solid #ccc;
+        padding:20px;
+        border-radius:8px;
+        margin-bottom:15px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+      }
+
+      .q-num {
+        font-size:.75rem;
+        color:#555;
+        margin-bottom:8px;
+      }
+
+      .question-text {
+        font-size:1rem;
+        font-weight:600;
+        margin-bottom:15px;
+      }
+
+      .stars {
+        display:flex;
+        justify-content:center;
+        gap:10px;
+      }
+
+      .star-btn {
+        background:none;
+        border:none;
+        cursor:pointer;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+      }
+
+      .star {
+        font-size:1.6rem;
+        color:#bbb;
+      }
+
+      .num {
+        font-size:.7rem;
+        color:#777;
+      }
+
+      .star-btn:hover .star {
+        color:#000;
+      }
+
+      .star-btn.active .star,
+      .star-btn.active .num {
+        color:#000;
+      }
+
+      .submit-wrap {
+        text-align:center;
+        margin-top:25px;
+      }
+
+      .btn {
+        background:#000;
+        color:#fff;
+        padding:12px 40px;
+        border:none;
+        border-radius:30px;
+        cursor:pointer;
+        font-size:1rem;
+      }
+
+      .btn:disabled {
+        opacity:.4;
+        cursor:not-allowed;
+      }
+
+      .counter {
+        margin-top:10px;
+        font-size:.8rem;
+        color:#555;
+      }
 
   body
     #app
-      .progress-bar
-        #progress-fill.progress-fill(style='width:0%')
-      span#q-num.q-num Question 1 of 20
-      p#question-text.question-text
-      select#rating.rating-select
-        option(value='') Select a rating...
-        option(value='1') 1 — Strongly Disagree
-        option(value='2') 2 — Disagree
-        option(value='3') 3 — Neutral
-        option(value='4') 4 — Agree
-        option(value='5') 5 — Strongly Agree
-      button#next-btn.btn(disabled) Next →
+      p.page-title Finance IQ
+      p.page-sub Rate each statement from 1 to 5
+
+      - var questions = ["I keep track of how much money I spend each week.", "Before I buy something, I check whether I have enough money.", "I set aside money regularly so I can buy something I want later.", "I find it easy to resist spending now in order to save for the future.", "I feel confident that I understand what a bank account is and how it works.", "I understand the difference between a debit card and a credit card.", "I know what interest means when borrowing or saving money.", "I understand that people earn money in different ways.", "When I buy something, I compare prices before deciding.", "Advertisements influence what I decide to buy.", "I think carefully about whether I need something before I buy it.", "I feel confident making a payment using a phone or electronic device.", "I know how to keep my personal information safe when paying online.", "I believe it is important for young people to understand how money works.", "I feel in control of my financial decisions."]
+
+      each q, i in questions
+        .question-block(data-q=i)
+          span.q-num Question #{i + 1}
+          p.question-text #{q}
+          .stars
+            each val in [1,2,3,4,5]
+              button.star-btn(type='button' data-q=i data-val=val)
+                span.star ★
+                span.num #{val}
+
+      .submit-wrap
+        button#submit-btn.btn(disabled) Submit Quiz
+        p.counter #[span#answered 0] of 15 answered
 
     script.
-      const questions = [
-        "I keep track of how much money I spend each week.",
-        "Before I buy something, I check whether I have enough money.",
-        "I set aside money regularly so I can buy something I want later.",
-        "I find it easy to resist spending now in order to save for the future.",
-        "I feel confident that I understand what a bank account is and how it works.",
-        "I understand the difference between a debit card and a credit card.",
-        "I know what interest means when borrowing or saving money.",
-        "I feel I know enough about money matters to make good decisions.",
-        "I understand that people earn money in different ways (wages, allowances, selling things).",
-        "I talk with family about how money is earned and managed at home.",
-        "When I buy something, I compare prices before deciding.",
-        "Advertisements influence what I decide to buy.",
-        "I think carefully about whether I need something before I buy it.",
-        "I feel confident making a payment using a phone or electronic device.",
-        "I know how to keep my personal information safe when paying online.",
-        "I think about how I will manage my money in the future.",
-        "I would like to learn more about managing money and personal finances.",
-        "I enjoy discussing money matters with friends or family.",
-        "I believe it is important for young people to understand how money works.",
-        "I feel in control of my financial decisions."
-      ];
-
+      const total = 15;
       const ratings = {};
-      let current = 0;
+      const submitBtn = document.getElementById('submit-btn');
+      const answeredEl = document.getElementById('answered');
 
-      const qNum    = document.getElementById('q-num');
-      const qText   = document.getElementById('question-text');
-      const select  = document.getElementById('rating');
-      const nextBtn = document.getElementById('next-btn');
-      const fill    = document.getElementById('progress-fill');
+      document.querySelectorAll('.star-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const q = parseInt(btn.dataset.q);
+          const val = parseInt(btn.dataset.val);
+          ratings[q] = val;
 
-      function render() {
-        qNum.textContent  = 'Question ' + (current + 1) + ' of ' + questions.length;
-        qText.textContent = questions[current];
-        fill.style.width  = (current / questions.length * 100) + '%';
-        select.value      = ratings[current] || '';
-        nextBtn.disabled  = !ratings[current];
-      }
+          const block = document.querySelector('.question-block[data-q="' + q + '"]');
+          block.querySelectorAll('.star-btn').forEach(b => {
+            b.classList.toggle('active', parseInt(b.dataset.val) === val);
+          });
 
-      select.addEventListener('change', function() {
-        if (!this.value) return;
-        ratings[current] = parseInt(this.value);
-        nextBtn.disabled = false;
+          answeredEl.textContent = Object.keys(ratings).length;
+          submitBtn.disabled = Object.keys(ratings).length < total;
+        });
       });
 
-      nextBtn.addEventListener('click', function() {
-        current++;
-        if (current >= questions.length) {
-          // Done — hand off to results or server
-          console.log('All ratings:', ratings);
-          alert('Quiz complete! Ratings: ' + JSON.stringify(ratings));
-        } else {
-          render();
-        }
+      submitBtn.addEventListener('click', () => {
+        alert('Quiz complete! Ratings: ' + JSON.stringify(ratings));
       });
-
-      render();

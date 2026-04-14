@@ -45,14 +45,8 @@ app.get("/login", (req, res) => {
 // LOGIN HANDLER
 app.post("/login", (req, res) => {
   req.session.loggedIn = true;
-  res.redirect("/quiz2");
+  res.redirect("/quiz2Q");
 });
-
-// Habits assessment intro page
-app.get("/quiz2", requireLogin, (req, res) => {
-  res.render("quiz2");
-});
-
 
 // First quiz question (example)
 app.get("/quiz1Q", (req, res) => {
