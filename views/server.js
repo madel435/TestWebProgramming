@@ -4,7 +4,7 @@ const path = require("path");
 const session = require("express-session");
 
 const indexRoutes = require('./routes/index' ) ;
-Iconst adminRoutes = require('./routes/admin' )
+const adminRoutes = require('./routes/admin' )
 
 app.use(express.urlencoded({ extended: true }));
 
