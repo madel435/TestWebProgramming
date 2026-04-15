@@ -13,6 +13,24 @@ app.use(
   })
 );
 
+sequelize.authenticate()
+	.then(()=>{//Successful
+	console.log("Successfully Authenticated");
+	app.listen(port);
+		sequelize.sync()
+		.then(()=>{
+			console.log("Successfully synced the model");
+			 )
+		.catch((err)=>{
+		console.log("Unable to sync model:", err);
+			
+		}
+	});
+	.catch((err)=>{
+		console.log("Could not authenticate:",err);
+	});//.then is if results successful, you will see return if catch if there was an error 
+
+
 function requireLogin(req, res, next) {
   if (req.session.loggedIn) {
     next();
